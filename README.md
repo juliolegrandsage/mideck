@@ -158,8 +158,3 @@ MiDeck is released under the **MIT License**. See [LICENSE](LICENSE) for details
 ---
 
 Made with 🎹 + 🐍 by [JulioLeGrandSage](https://github.com/juliolegrandsage).
-
-```
-
-Petit détail au passage : ton `main.py` importe **Lupa** mais ne l'utilise pas encore, donc j'ai gardé la dépendance dans le README pour refléter le code actuel.
-```
