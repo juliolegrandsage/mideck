@@ -35,12 +35,11 @@ mideck/
 
   * [Mido](https://mido.readthedocs.io/)
   * [python-rtmidi](https://pypi.org/project/python-rtmidi/)
-  * [Lupa](https://pypi.org/project/lupa/)
 
 Install the dependencies with:
 
 ```bash
-pip install mido python-rtmidi lupa
+pip install mido python-rtmidi 
 ```
 
 ## ▶️ Usage
