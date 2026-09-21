@@ -2,10 +2,8 @@ import mido
 import rtmidi
 import func
 import json
-import lupa
+import threading
 
-
-lua = lupa.LuaRuntime()
 
 def load_json():
     with open("config.json", "r") as config_file:
@@ -34,9 +32,19 @@ def detect_midi_note():
             elif msg.type == 'note_off':
                 print(f"Note Off: {msg.note} Velocity: {msg.velocity}")
 
+def get_knob_values():
+    with mido.open_input() as inport:
+        for msg in inport:
+            if msg.type == 'control_change':
+                print(f"{msg.control} value : {msg.value}")
+                
 
 
+thread_notes = threading.Thread(target=detect_midi_note)
+thread_knob = threading.Thread(target=get_knob_values)
 
-print_connected_devices()
+thread_notes.start()
+thread_knob.start()
 
-detect_midi_note()
+thread_notes.join()
+thread_knob.join()
