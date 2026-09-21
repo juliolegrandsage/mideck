@@ -3,7 +3,7 @@ import rtmidi
 import func
 import json
 import threading
-
+import knob_func
 
 def load_json():
     with open("config.json", "r") as config_file:
@@ -37,7 +37,7 @@ def get_knob_values():
         for msg in inport:
             if msg.type == 'control_change':
                 print(f"{msg.control} value : {msg.value}")
-                
+                knob_func.increase_volume(msg.value)
 
 
 thread_notes = threading.Thread(target=detect_midi_note)
