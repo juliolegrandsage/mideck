@@ -47,11 +47,26 @@ def detect_midi_note():
                 elif msg.type == 'note_off':
                     print(f"Note Off: {msg.note} Velocity: {msg.velocity}")
 
+def detect_knob_control():
+    print("knob ctrl enabled")
+    if len(mido.get_input_names()) > 0:
+        with mido.open_input() as inport:
+            for msg in inport:
+                if msg.type == 'control_change':
+                    print(f"Parameter :  {msg.value} and {msg.channel}")
+
+
 print_connected_devices()
 # Threading
 
 note_thread = threading.Thread(target=detect_midi_note)
-note_thread.start()
+knob_thread = threading.Thread(target=detect_knob_control)
 
+
+note_thread.start()
+knob_thread.start()
+
+
+note_thread.join()
 note_thread.join()
 
