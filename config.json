@@ -1,6 +1,7 @@
 {
     "devices": "",
     "mappings":{
-        "60": "open_steam"
+        "60": "open_steam",
+        "61": "open_youtube"
     }
 }

@@ -1,0 +1,21 @@
+MiDeck - User Manual
+====================
+
+Requirements
+------------
+
+MiDeck requires two configuration files:
+
+- config.json
+- func.py
+
+This build includes a `default_config` folder containing both files with a default configuration.
+
+You can use these files directly or modify them to create your own MIDI mappings and actions.
+
+First command
+---------------
+
+.\mideck.exe .\default_config\func.py .\default_config\config.json
+
+This will launch MiDeck default files. If you press central C (C5) on your MIDI controller, MiDeck will print "Connected"
