@@ -6,6 +6,7 @@
         "65": "mute"
     },
     "knob_functions":{
-        "22": "set_vol"
+        "22": "set_vol",
+        "23": "set_brightness"
     }
 }

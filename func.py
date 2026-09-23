@@ -1,6 +1,8 @@
 import subprocess
 import webbrowser
 from pycaw.pycaw import AudioUtilities
+import screen_brightness_control
+
 # import os
 
 
@@ -21,7 +23,8 @@ def open_youtube():
     
 def mute():
     volume.SetMute(not volume.GetMute(), None)
-    
+
+
 def set_vol(value):
 
     
@@ -32,4 +35,8 @@ def set_vol(value):
         volume.SetMute(1, None)
     else:
         volume.SetMute(0, None)
+        
+
+def set_brightness(value):
     
+    screen_brightness_control.set_brightness(value)
