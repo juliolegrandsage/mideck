@@ -51,7 +51,16 @@ def detect_midi():
                     print(f"Note Off: {msg.note} Velocity: {msg.velocity}")
 
                 elif msg.type == 'control_change':
-                    func.set_vol(msg.value)
+                    funcname = cfg["knob_functions"].get(str(msg.control))
+                    print(msg.control)
+                    if funcname:
+                        action = getattr(func, funcname, None)
+                        
+                        if action:
+                            action(msg.value)
+                        
+                        else:
+                            print(f"ERROR: function '{funcname}' not found in {args.func}")
 
 print_connected_devices()
 # Threading
