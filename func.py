@@ -19,9 +19,17 @@ def open_steam():
 def open_youtube():
     webbrowser.open("www.youtube.com/")
     
+def mute():
+    volume.SetMute(not volume.GetMute(), None)
+    
 def set_vol(value):
 
     
     value = value / 127    
     volume.SetMasterVolumeLevelScalar(value, None)
+    print(volume.GetMasterVolumeLevelScalar())
+    if volume.GetMasterVolumeLevelScalar() <= 0:
+        volume.SetMute(1, None)
+    else:
+        volume.SetMute(0, None)
     

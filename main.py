@@ -29,6 +29,7 @@ def print_connected_devices():
             print(f"Input: {port}")
     else:
         print("ERROR : No device detected, please plug a MIDI controller.")
+
 def detect_midi():
     if len(mido.get_input_names()) > 0:
         with mido.open_input() as inport:

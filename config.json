@@ -2,7 +2,8 @@
     "devices": "",
     "mappings":{
         "60": "open_steam",
-        "61": "open_youtube"
+        "61": "open_youtube",
+        "65": "mute"
     },
     "knob_functions":{
         "22": "set_vol"
