@@ -29,44 +29,35 @@ def print_connected_devices():
             print(f"Input: {port}")
     else:
         print("ERROR : No device detected, please plug a MIDI controller.")
-
-def detect_midi_note():
+def detect_midi():
     if len(mido.get_input_names()) > 0:
         with mido.open_input() as inport:
             for msg in inport:
+
                 if msg.type == 'note_on' and msg.velocity > 0:
                     print(f"Note On: {msg.note} Velocity: {msg.velocity}")
 
                     action_name = cfg["mappings"].get(str(msg.note))
+
                     if action_name:
                         action = getattr(func, action_name, None)
+
                         if action:
                             action()
                         else:
                             print(f"action '{action_name}' was not found")
+
                 elif msg.type == 'note_off':
                     print(f"Note Off: {msg.note} Velocity: {msg.velocity}")
 
-def detect_knob_control():
-    print("knob ctrl enabled")
-    if len(mido.get_input_names()) > 0:
-        with mido.open_input() as inport:
-            for msg in inport:
-                if msg.type == 'control_change':
-                    print(f"Parameter :  {msg.value} and {msg.channel}")
-
+                elif msg.type == 'control_change':
+                    func.set_vol(msg.value)
 
 print_connected_devices()
 # Threading
 
-note_thread = threading.Thread(target=detect_midi_note)
-knob_thread = threading.Thread(target=detect_knob_control)
 
-
-note_thread.start()
-knob_thread.start()
-
-
-note_thread.join()
-note_thread.join()
-
+try:
+    detect_midi()
+except KeyboardInterrupt:
+    print("fermeture")
