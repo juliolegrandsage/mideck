@@ -2,10 +2,9 @@ import subprocess
 import webbrowser
 from pycaw.pycaw import AudioUtilities
 import screen_brightness_control
-import obsws_python
+import obs_integration
 # import os
 
-obs_client = obsws_python.ReqClient(host="localhost", port="4455")
 
 
 # You can add your own commands in this file by creating a function and giving it a midi note in "config.json"
@@ -26,8 +25,8 @@ def open_youtube():
 def mute():
     volume.SetMute(not volume.GetMute(), None)
 
-def mute_obs():
-    obs_client.toggle_input_mute('Mic/Aux')
+def go_to_game():
+    obs_integration.change_obs_scene("game")
 
 def set_vol(value):
 

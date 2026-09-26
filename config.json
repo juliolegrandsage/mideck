@@ -4,7 +4,8 @@
         "60": "open_steam",
         "61": "open_youtube",
         "65": "mute",
-        "55": "mute_obs"
+        "55": "mute_obs",
+        "68": "go_to_game"
     },
     "knob_functions":{
         "22": "set_vol",
